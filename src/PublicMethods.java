@@ -46,6 +46,14 @@ public class PublicMethods {
 		}
 	}
 	
+	static public void printArray(int[] a){
+		int length = a.length;
+		for(int i = 0; i < length; ++i){
+			System.out.print(a[i] + " ");
+		}
+		System.out.println();
+	}
+	
 	static public void quickSort(int[] array, int left, int right){
 		int p = (left + right)/2;
 		int pivot = array[p];
