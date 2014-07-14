@@ -8,6 +8,12 @@ public class WordSearch {
 	public boolean exist(char[][] board, String word) {
 		this.row = board.length;
 		this.col = board[0].length;
+		
+		visited = new boolean[row][col];
+		for(int i = 0; i < row; ++i){
+			visited[i] = new boolean[col];
+		}
+		
 		for(int i = 0; i < row; ++i){
 			for(int j = 0; j < col; ++j){
 				if(dfs(board, word, i, j))
