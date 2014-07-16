@@ -34,15 +34,24 @@ public class CloneGraph {
 		
 		while(!queue.isEmpty()){
 			UndirectedGraphNode cur = queue.remove();
+			UndirectedGraphNode curClone = record.get(cur);
 			
 			ArrayList<UndirectedGraphNode> neighbor = new ArrayList<>(cur.neighbors);
 			
 			for(int i = 0; i < neighbor.size(); ++i){
-				if(record.containsKey(neighbor)){
-					
+				UndirectedGraphNode temp = neighbor.get(i);
+				if(record.containsKey(temp)){
+					UndirectedGraphNode neighborClo = record.get(temp);
+					curClone.neighbors.add(neighborClo);
+				}else{
+					UndirectedGraphNode neighborClo = new UndirectedGraphNode(temp.label);
+					curClone.neighbors.add(neighborClo);
+					record.put(temp, neighborClo);
+					queue.add(temp);
 				}
 			}
 		}
+		return cpNode;
 	}
 	
 	public static void main(String[] args) {
